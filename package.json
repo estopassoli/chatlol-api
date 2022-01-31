@@ -1,0 +1,25 @@
+{
+  "name": "chatlol-api",
+  "version": "1.0.0",
+  "description": "Para começar, você precisa ter instalado o Node, npm e yarn.\r Versões utilizadas nesse projeto:",
+  "main": "app",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/estopassoli/chatlol-api.git"
+  },
+  "author": "Erick Stopassoli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/estopassoli/chatlol-api/issues"
+  },
+  "homepage": "https://github.com/estopassoli/chatlol-api#readme",
+  "dependencies": {
+    "moment": "^2.29.1",
+    "mysql2": "^2.3.3",
+    "riot-lol-api": "^4.3.4",
+    "venom-bot": "^4.0.5"
+  }
+}
