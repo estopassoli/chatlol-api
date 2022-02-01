@@ -12,7 +12,17 @@ var riot = new RiotRequest(api.key);
 
 async function execute(user, msg, contato, client, message) {
 
-    if (msg != "Sim" && msg != "Não") {
+    msg = msg.toUpperCase();
+    msg = msg.replace(' ', '');
+    if (msg === "SIM") {
+
+        await db.setStage(user, 'menu-inicial');
+        await client.sendText(user, "Pronto, cadastro realizado com sucesso!")
+    }
+    if (msg === "NAO" || msg === "NÃO") {
+        await client.sendText(user, "Digite o seu *nick* do *League of Legends*!")
+    }
+    else{
         riot.request('BR1', `summoner`, `/lol/summoner/v4/summoners/by-name/${msg}`, function(err, data) {
             if (err) {
                 client.sendText(user, "Usuario nao identificado");
@@ -28,14 +38,6 @@ async function execute(user, msg, contato, client, message) {
                 });
             }
         })
-    }
-    if (msg === "Sim") {
-
-        await db.setStage(user, 'menu-inicial');
-        await client.sendText(user, "Pronto, cadastro realizado com sucesso!")
-    }
-    if (msg === "Não") {
-        await client.sendText(user, "Qual é o seu NICK no League of Legends?")
     }
 
 }

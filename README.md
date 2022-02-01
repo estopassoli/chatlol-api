@@ -63,8 +63,10 @@ mysql://joelvasiliev:123@localhost:3306/clientes
 
 ## Próxima versão
 
-- Persistir dados no banco de dados
+- Persistir dados no banco de dados.
+- Arquivo JSON com comandos disponíveis e conteúdo das mensagens.
 
 ## v1.0
 
 - Árvore de escolhas para cadastro e mensagem de boas-vindas.
+- Tratamento da mensagem "Sim" e "Nao" das confirmações de cadastro para evitar problemas no uso do bot.
