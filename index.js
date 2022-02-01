@@ -1,6 +1,6 @@
 const chatlol = require("venom-bot");
 const { step } = require("./models/stages");
-const {verifyCustomer} = require('./functions/verifyCustomer');
+const {verifySummoner} = require('./functions/verifySummoner');
 
 chatlol.create().then((client) => start(client)).catch((erro) => {
     console.log(erro);
@@ -22,8 +22,8 @@ function start(client) {
     client.onMessage(async (message) => {
         const isValidNumber = client.checkNumberStatus(message.from);
         if (message.isGroupMsg === false && isValidNumber) {
-            const stageCustomer = await verifyCustomer(message);
-            await step[stageCustomer].obj.execute(
+            const stage = await verifySummoner(message);
+            await step[stage].obj.execute(
                 message.from,
                 message.body,
                 message.sender.name,

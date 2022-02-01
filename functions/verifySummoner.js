@@ -1,4 +1,4 @@
-const db = require('./db-functions');
+const db = require('../models/db');
 const temp_db = require('../models/temp-db')
 
 async function verifySummoner(message) {
