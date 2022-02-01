@@ -58,6 +58,8 @@ No terminal aparecerá um QR Code, então é só entrar no WhatsApp, clicar em "
 ## To-do-list
 
 - Sistema para limpar o banco temporário periodicamente.
+- Sistema de autenticação na conta do LOL.
+- Opção de cadastro de Smurfs.
 - Cadastro de usuários (id, nome, telefone, nick, elo, etc.).
 - "Tinder" para encontrar duo/time flex.
 - Obter informações sobre jogador (elo, campeões mais jogados, maestria, winrate).
@@ -66,9 +68,12 @@ No terminal aparecerá um QR Code, então é só entrar no WhatsApp, clicar em "
 
 ## Próxima versão
 
-- Persistir dados no banco de dados.
-
 ## v1.0
 
 - Árvore de escolhas para cadastro e mensagem de boas-vindas.
 - Tratamento da mensagem "Sim" e "Nao" das confirmações de cadastro para evitar problemas no uso do bot.
+
+## v1.1
+
+- Persistir dados no banco de dados.
+- Alteração tabela "rank" para "elosoloq" no banco de dados.

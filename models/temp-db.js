@@ -1,5 +1,4 @@
 let banco = {
-    
 };
 
-exports.temp_db = banco;
+exports.tmp_db = banco;
