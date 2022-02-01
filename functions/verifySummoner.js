@@ -12,7 +12,7 @@ async function verifySummoner(message){
     let res = await db.getStage(
         message.from
         );
-    console.log(`verifySummoner: ${res}`)
+    // console.log(`verifySummoner: ${res}`)
     return res;
 }
 
