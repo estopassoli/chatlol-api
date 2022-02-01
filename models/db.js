@@ -30,9 +30,19 @@ async function createSummoner(chatid, stage){
   return;
 }
 
+async function updateSummoner(chatid,field,value){
+  const conn = await connect();
+  const sql = `UPDATE summoner SET ${field} = '${value}' WHERE chatid = '${chatid}';`
+  await conn.query(sql);
+
+  return;
+}
+
+
 module.exports = {
   getSummonerData,
   getStage,
   setStage,
-  createSummoner
+  createSummoner,
+  updateSummoner
 }

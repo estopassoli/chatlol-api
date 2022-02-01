@@ -1,4 +1,4 @@
-const db = require("../../functions/db-functions");
+const db = require("../../models/db");
 const {bt_add} = require("../../inc/buttons/bt_add");
 
 async function execute(user, msg, contato, client, message) {

@@ -23,6 +23,7 @@ function start(client) {
         const isValidNumber = client.checkNumberStatus(message.from);
         if (message.isGroupMsg === false && isValidNumber) {
             const stage = await verifySummoner(message);
+            console.log(`index stage ${stage}`)
             await step[stage].obj.execute(
                 message.from,
                 message.body,

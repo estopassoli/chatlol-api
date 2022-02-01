@@ -7,10 +7,10 @@ function connect() {
 
 
     const connection = mysql.createConnection({
-        host: 'localhost',
+        host: '127.0.0.1',
         user: 'root',
-        password: '12345678',
-        database: 'chatlol-api'
+        password: '12345',
+        database: 'summoners'
     });
     console.log('Conectou no banco de dados!');
 

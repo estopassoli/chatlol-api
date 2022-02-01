@@ -1,4 +1,4 @@
-const db = require("../../functions/db-functions");
+const db = require("../../models/db");
 const temp_db = require('../../models/temp-db')
 const {
     bt_add

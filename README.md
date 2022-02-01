@@ -63,5 +63,8 @@ mysql://joelvasiliev:123@localhost:3306/clientes
 
 ## Próxima versão
 
+- Persistir dados no banco de dados
+
 ## v1.0
 
+- Árvore de escolhas para cadastro e mensagem de boas-vindas.
