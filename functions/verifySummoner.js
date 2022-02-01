@@ -18,7 +18,6 @@ async function verifySummoner(message) {
         message.from
     );
     return res;
-
 }
 
 exports.verifySummoner = verifySummoner;

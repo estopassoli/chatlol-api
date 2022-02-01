@@ -25,8 +25,8 @@ No terminal aparecerá um QR Code, então é só entrar no WhatsApp, clicar em "
 Para subir uma instância do banco de dados utilizando docker, rode os seguintes comandos:
 
 ```
-docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=12345 -d mysql:8.0
-mysql -uroot -h127.0.0.1 -p12345 < schema.sql
+docker run --name mysql-chatlols -p 3306:3306 -e MYSQL_ROOT_PASSWORD=12345 -d mysql:8.0
+mysql -uroot -h127.0.0.1 -p12345 < chatlol-api.sql
 
 create user 'joelvasiliev' IDENTIFIED BY '123';
 grant all privileges on clientes.* to joelvasiliev;

@@ -14,12 +14,21 @@ Date: 2022-02-01 05:47:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
--- Table structure for `users`
+--     Database creation     --
 -- ----------------------------
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `userid` int(8) NOT NULL AUTO_INCREMENT,
+
+DROP DATABASE IF EXISTS `summoners`;
+CREATE DATABASE `summoners`;
+USE `summoners`;
+
+-- ----------------------------
+-- Table structure for `summoners`
+-- ----------------------------
+DROP TABLE IF EXISTS `summoner`;
+CREATE TABLE `summoner` (
+  `summonerid` int(8) NOT NULL AUTO_INCREMENT,
   `chatid` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `realname` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `nickname` varchar(16) NOT NULL,
@@ -28,10 +37,10 @@ CREATE TABLE `users` (
   `role` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `level` int(16) DEFAULT NULL,
   `stage` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`userid`)
+  PRIMARY KEY (`summonerid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
--- Records of users
+-- Records of summoners
 -- ----------------------------
-INSERT INTO `users` VALUES ('10', '5513996597134@c.us', 'Riquie', '', null, null, null, null, '2-cadastrar');
+INSERT INTO `summoner` VALUES ('10', '5513996597134@c.us', 'Riquie', '', null, null, null, null, '2-cadastrar');
