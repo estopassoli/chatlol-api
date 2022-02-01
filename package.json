@@ -4,7 +4,8 @@
   "description": "Para começar, você precisa ter instalado o Node, npm e yarn.\r Versões utilizadas nesse projeto:",
   "main": "app",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

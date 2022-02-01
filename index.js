@@ -23,7 +23,6 @@ function start(client) {
         const isValidNumber = client.checkNumberStatus(message.from);
         if (message.isGroupMsg === false && isValidNumber) {
             const stageCustomer = await verifyCustomer(message);
-            //console.log(message.sender.pushname + " : " + stageCustomer);
             await step[stageCustomer].obj.execute(
                 message.from,
                 message.body,

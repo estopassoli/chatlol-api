@@ -1,13 +1,13 @@
-const db = require('./db-functions');
+const db = require('../models/db');
 
 async function verifyCustomer(message){
     const id = await db.getCustomerData(message.from,'id');
-    if (typeof id[0] !== 'undefined'){
-        //return true; // já existia o cadastro do cliente no banco
+    if (typeof id[0] == 'undefined'){
+        // não existe o cliente cadastrado
+        await db.createSummoner(message.from,'menu-inicial');
     }
     else{
-        await db.createCustomer('','',message.from,'cadastro-nome');
-        // não existia o cadastro mas foi criado
+        // já existe cadastro
     }
     let res = await db.getStage(
         message.from
