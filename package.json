@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/estopassoli/chatlol-api#readme",
   "dependencies": {
+    "dotenv": "^15.0.0",
     "moment": "^2.29.1",
     "mysql2": "^2.3.3",
+    "request": "^2.88.2",
     "riot-lol-api": "^4.3.4",
     "venom-bot": "^4.0.5"
   }
