@@ -14,13 +14,13 @@ yarn v1.22.17
 Para subir uma instância do banco de dados utilizando docker, rode os seguintes comandos:
 
 ```
-docker run --name mysql-chatlols -p 3306:3306 -e MYSQL_ROOT_PASSWORD=12345 -d mysql:8.0
+docker run --name mysql-chatbotlol -p 3306:3306 -e MYSQL_ROOT_PASSWORD=12345 -d mysql:8.0
 mysql -uroot -h127.0.0.1 -p12345 < chatlol-api.sql
 
 create user 'admin' IDENTIFIED BY '123';
-grant all privileges on clientes.* to joelvasiliev;
+grant all privileges on summoners.* to admin;
 
-mysql -h127.0.0.1 -ujoelvasiliev -p123
+mysql -h127.0.0.1 -uadmin -p123
 ```
 
 Parâmetros:
@@ -31,14 +31,14 @@ Parâmetros:
 nome_db
 ```
 
-MYSQL_DB=clientes
-MYSQL_USER=joelvasiliev
+MYSQL_DB=summoners
+MYSQL_USER=admin
 MYSQL_USER_PWD=123
 MYSQL_HOST=127.0.0.1
 MYSQL_PORT=3306
 
-mysql -h127.0.0.1 -ujoelvasiliev -p123 clientes
-mysql://joelvasiliev:123@localhost:3306/clientes
+mysql -h127.0.0.1 -uadmin -p123 summoners
+mysql://admin:123@localhost:3306/summoners
 
 ## Subir Aplicação
 
