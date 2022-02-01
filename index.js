@@ -1,6 +1,6 @@
 const chatlol = require("venom-bot");
 const { step } = require("./models/stages");
-const {verifySummoner} = require('./functions/verifySummoner');
+const { verifySummoner } = require('./functions/verifySummoner');
 
 chatlol.create().then((client) => start(client)).catch((erro) => {
     console.log(erro);

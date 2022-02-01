@@ -55,6 +55,7 @@ mysql://joelvasiliev:123@localhost:3306/clientes
 
 ## To-do-list
 
+- Sistema para limpar o banco temporário periodicamente.
 - Cadastro de usuários (id, nome, telefone, nick, elo, etc.).
 - "Tinder" para encontrar duo/time flex.
 - Obter informações sobre jogador (elo, campeões mais jogados, maestria, winrate).
@@ -64,7 +65,6 @@ mysql://joelvasiliev:123@localhost:3306/clientes
 ## Próxima versão
 
 - Persistir dados no banco de dados.
-- Arquivo JSON com comandos disponíveis e conteúdo das mensagens.
 
 ## v1.0
 

@@ -6,13 +6,11 @@ async function execute(user, msg, contato, client, message) {
   msg = msg.replace(' ', '');
 
    if(msg === "SIM"){
-
-    await db.updateUser(user, 'realname', temp_db[user].nomereal);
     await db.setStage(user, '2-cadastro');
-    await client.sendText(user, `Agora digite seu NICK do League of Legends:`)
+    await client.sendText(user, `Agora digite seu *nick* do *League of Legends*`)
   }
   if(msg === "NAO" || msg === "NÃO"){
-    await db.setStage(user, '1.1-cadastro');
+    await db.setStage(user, '1.2-cadastro');
     await client.sendText(user, `Ok, então me diga o nome que você quer que eu coloque no seu cadastro!`)
   }
   else{
