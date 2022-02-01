@@ -1,10 +1,11 @@
-const db = require("../functions/db-functions");
+const db = require('../models/db');
+const {getTime} = require('../functions/getTime');
+const {bt_boolean} = require('../inc/buttons/bt_boolean');
 
 async function execute(user, msg, contato, client, message){
     await client.sendText(user, `🤖  Seja bem-vindo ao Chatbot League of Legends!  🤖`);
     await client.sendText(user, 
         `
-        Olá ${message.sender.pushname},\n
         Digite *!help* para ver uma lista com todos os comandos possíveis\n
         Para mais informações acesse nosso Discord <>\n
         *{chave-pix}*\n

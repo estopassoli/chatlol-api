@@ -1,19 +1,12 @@
 const chatlol = require("venom-bot");
-const {
-    step
-} = require("./models/stages");
-const {
-    verifySummoner
-} = require('./functions/verifySummoner');
-const {
-    temp_db
-} = require("./models/temp-db");
+const { step } = require("./models/stages");
+const {verifyCustomer} = require('./functions/verifyCustomer');
 
 chatlol.create().then((client) => start(client)).catch((erro) => {
     console.log(erro);
 });
 
-async function start(client) {
+function start(client) {
     client.onIncomingCall(async (call) => {
         console.log("Ligação recusada de: " + parseFloat(call.peerJid));
         await client
@@ -21,17 +14,16 @@ async function start(client) {
             .then(async () => {
                 client.blockContact(call.peerJid);
             });
+
         setInterval(async () => {
             await client.unblockContact(call.peerJid);
         }, 1000);
     });
-
     client.onMessage(async (message) => {
-        console.log(temp_db[message.from])
         const isValidNumber = client.checkNumberStatus(message.from);
         if (message.isGroupMsg === false && isValidNumber) {
-            const stage = await verifySummoner(message);
-            await step[stage].obj.execute(
+            const stageCustomer = await verifyCustomer(message);
+            await step[stageCustomer].obj.execute(
                 message.from,
                 message.body,
                 message.sender.name,
