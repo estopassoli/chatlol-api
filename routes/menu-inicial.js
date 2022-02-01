@@ -1,4 +1,4 @@
-
+const db = require("../../models/db");
 
 async function execute(user, msg, contato, client, message){
     let text = `
@@ -12,6 +12,7 @@ async function execute(user, msg, contato, client, message){
     🤖 ============================================ 🤖
     `
     await client.sendText(user,text);
+    await db.setStage(user, 'comandos');
 
     return;
 }
