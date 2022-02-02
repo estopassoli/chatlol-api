@@ -82,6 +82,11 @@ No terminal aparecerá um QR Code, então é só entrar no WhatsApp, clicar em "
 - Salvo mais dados do summoner no temp_db.
 - Criação novas de tabelas no banco de dados para armazenar informações de cada modo de jogo do jogador.
 - Opção de cadastrar conta Smurf.
+
+## v1.2
+
 - Criar as colunas para os dados novos na tabela 'summoner'.
 - Estruturação tmp_db.
 - Salvar do tmp_db para o MySQL.
+- Criação tabela "smurf".
+- Criação comando !smurf.
