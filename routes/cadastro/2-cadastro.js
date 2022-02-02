@@ -45,7 +45,7 @@ async function execute(user, msg, contato, client, message) {
                         let losses = `${data2[0].losses}`
                         let winrate = `${((data2[0].wins / (data2[0].wins + data2[0].losses)) * 100).toFixed(2)}%`
                         await client.sendButtons(user, `NICKNAME: ${data.name}\nLEVEL: ${data.summonerLevel}\nRANK: ${data2[0].tier} ${data2[0].rank} ${data2[0].leaguePoints} PDL\nWINRATE: ${winrate}\n`, bt_add, "Deseja adicionar esta conta ao seu cadastro?");
-                        createTmpSummoner();
+                        createTmpSummoner(data.name,user);
                         return;
                     }
                 });
