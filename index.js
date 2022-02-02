@@ -1,6 +1,13 @@
 const chatlol = require("venom-bot");
-const { step } = require("./models/stages");
-const { verifySummoner } = require('./functions/verifySummoner');
+const {
+    step
+} = require("./models/stages");
+const {
+    verifySummoner
+} = require('./functions/verifySummoner');
+const {
+    tmp_db
+} = require("./models/temp-db");
 
 chatlol.create().then((client) => start(client)).catch((erro) => {
     console.log(erro);
@@ -19,6 +26,10 @@ function start(client) {
             await client.unblockContact(call.peerJid);
         }, 1000);
     });
+
+    setInterval(async () => {
+        tmp_db = [];
+    }, 12000000);
     client.onMessage(async (message) => {
         const isValidNumber = client.checkNumberStatus(message.from);
         if (message.isGroupMsg === false && isValidNumber) {
