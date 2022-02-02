@@ -11,7 +11,7 @@ async function execute(user, msg, contato, client, message) {
   if (msg === 'SIM') {
     await db.updateSummoner(user, 'realname', message.sender.pushname)
     await db.setStage(user, '2-cadastro');
-    await client.sendText(user, `Agora digite seu nome de invocador em League of Legends`)
+    await client.sendText(user, 'Agora digite seu nome de *Invocador* da sua conta no *League of Legends*')
     return;
   }
   if (msg === 'NAO' || msg == 'NÃO') {

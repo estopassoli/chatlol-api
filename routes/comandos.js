@@ -1,5 +1,8 @@
 const db = require("../models/db");
 const comandos = require('../inc/comandos');
+const {
+    menuInicial
+} = require("../inc/messages");
 async function execute(user, msg, contato, client, message) {
 
     if (msg == "!help") {
@@ -7,12 +10,12 @@ async function execute(user, msg, contato, client, message) {
         Object.keys(comandos).forEach((value) => {
             let i = comandos[value];
             cmd += `${i}\n`;
-          });
+        });
         await client.sendText(user, `Aqui vai uma lista de comandos disponíveis:\n` + cmd)
     }
 
     if (msg == "!elo") {
-        
+
     }
     if (msg == "!info") {
 
@@ -23,7 +26,14 @@ async function execute(user, msg, contato, client, message) {
     if (msg == "!role") {
 
     }
-
+    if (msg == "!addsmurf") {
+        await db.setStage(user, '1-smurf')
+        await client.sendText(user, 'Agora digite seu nome de *Invocador* da sua conta no *League of Legends* ')
+    }
+    
+    else {
+        await client.sendTexT(user, menuInicial())
+    }
     return;
 }
 

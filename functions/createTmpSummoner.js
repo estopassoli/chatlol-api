@@ -37,6 +37,14 @@ function createTmpSummoner(nome, chatid){
                 let wins = data2[i]['wins']
                 let losses = data2[i]['losses']
                 let winrate = (wins / (wins+losses)*100).toFixed(2)+'%'
+
+                if (typeof tier === "undefined"){
+                    tier = "unranked"
+                }
+                if (typeof rank === "undefined"){
+                    rank = "null"
+                }
+
                 queueTypeChild = {
                     summonerId:summonerId,
                     leaguePoints:leaguePoints,
@@ -49,14 +57,14 @@ function createTmpSummoner(nome, chatid){
 
                 tmp_db[chatid]['queueType'][queueType] = queueTypeChild
 
-                // tmp_db[chatid]['queueType'][queueType] = queueTypeChild;
             }
-            console.log(tmp_db[chatid])
+            // console.log(tmp_db)
             return tmp_db[chatid];
         })
     })
 }
 
-createTmpSummoner('katarina','12314523')
+// para testar a função:
+// createTmpSummoner('katarina','121314124')
 
 exports.createTmpSummoner = createTmpSummoner;
