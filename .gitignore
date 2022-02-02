@@ -4,4 +4,4 @@ tokens
 tests.js
 test.js
 package-lock.json
-configs/connect.js
+.configs/connect.js
