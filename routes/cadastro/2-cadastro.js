@@ -17,21 +17,15 @@ async function execute(user, msg, contato, client, message) {
     msg = msg.toUpperCase();
     msg = msg.replace(' ', '');
     if (msg === "SIM") {
-        await db.setStage(user, 'menu-inicial');
-
-        // await db.updateSummoner(user, 'nickname', tmp_db[user].name)
-        // await db.updateSummoner(user, 'elosoloq', tmp_db[user].tier + tmp_db[user].rank )
-        // await db.updateSummoner(user, 'winrate', tmp_db[user].winrate)
-        // await db.updateSummoner(user, 'level', tmp_db[user].summonerLevel)
+        await db.setStage(user, 'comandos');
         await client.sendText(user, "Pronto, cadastro realizado com sucesso!")
         await client.sendText(user, menuInicial())
-
         createSummoner(user);
 
         return;
     }
     if (msg === "NAO" || msg === "NÃO") {
-        await client.sendText(user, "Digite o seu *nick* do *League of Legends*!")
+        await client.sendText(user, 'Digite seu nome de *Invocador* da sua conta no *League of Legends* ')
         return;
     }
     else{

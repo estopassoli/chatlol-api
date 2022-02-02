@@ -44,6 +44,13 @@ async function updateSummoner(chatid,field,value){
   return;
 }
 
+// specific mode functions tables
+
+async function createRankedData(mode, chatid, summonerId, queueType, tier, elo, leaguePoints, wins, losses){
+  const conn = await connect();
+  const sql = `INSERT INTO summonerData${mode} (chatid, summonerId, queueType, tier, elo, leaguePoints, wins, losses) values('${chatid}','${summonerId}','${queueType}','${tier}','${elo}',${leaguePoints},${wins},${losses});`;
+  await conn.query(sql);
+}
 
 module.exports = {
   getSummonerData,
@@ -51,5 +58,6 @@ module.exports = {
   createSmurf,
   setStage,
   createSummoner,
-  updateSummoner
+  updateSummoner,
+  createRankedData
 }

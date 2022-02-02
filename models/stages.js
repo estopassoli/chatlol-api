@@ -1,8 +1,4 @@
 stages = {
-    "menu-inicial":{
-        desc: "Menu inicial do BOT",
-        obj: require("../routes/menu-inicial"),
-    },
     "comandos":{
         desc: "Todos os comandos primários do bot",
         obj: require("../routes/comandos")
@@ -27,5 +23,10 @@ stages = {
         desc: "Última etapa do cadastro de novos usuários",
         obj: require("../routes/cadastro/2-cadastro")
     },
+    "1-smurf":{
+        desc: "Cadastrar smurfs",
+        obj: require("../routes/smurf/1-smurf")
+    },
 }
+
 exports.step = stages;
