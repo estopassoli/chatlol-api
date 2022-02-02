@@ -28,29 +28,72 @@ DROP DATABASE IF EXISTS `summoners`;
 CREATE DATABASE `summoners`;
 USE `summoners`;
 
--- ----------------------------
--- Table structure for `summoners`
--- ----------------------------
+-- -------------------------------- --
+-- Table structure for `summoners`  --
+-- -------------------------------- --
+
 DROP TABLE IF EXISTS `summoner`;
 CREATE TABLE `summoner` (
-  `summonerid` int(8) NOT NULL AUTO_INCREMENT,
+  `id` int(30) AUTO_INCREMENT,
+  `summonerid` varchar(100) UNIQUE,
   `chatid` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `realname` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `nickname` varchar(16) DEFAULT NULL,
-  `elosoloq` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `winrate` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `role` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `level` int(16) DEFAULT NULL,
   `stage` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  PRIMARY KEY (`summonerid`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 create user IF NOT EXISTS 'admin' IDENTIFIED BY '123';
 grant all privileges on summoners.* to admin;
 
--- ----------------------------
--- Records of summoners
--- ----------------------------
-/*
-INSERT INTO `summoner` VALUES ('10', '5513996597134@c.us', 'Riquie', null, null, null, null, null, '2-cadastrar');
-*/
+-- ----------------------------------- --
+-- Table structure for `summonerDataSoloQ`  --
+-- ----------------------------------- --
+
+DROP TABLE IF EXISTS `summonerDataRANKED_SOLO_5x5`;
+CREATE TABLE `summonerDataRANKED_SOLO_5x5` (
+  `id` int(30) AUTO_INCREMENT,
+  `summonerId` varchar(100) UNIQUE,
+  `queueType` varchar(30),
+  `tier` varchar(21),
+  `rank` varchar(5),
+  `leaguePoints` int(4),
+  `wins` int(11),
+  `losses` int(11),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------- --
+-- Table structure for `summonerDataFlex`  --
+-- ----------------------------------- --
+
+DROP TABLE IF EXISTS `summonerDataRANKED_FLEX_5x5`;
+CREATE TABLE `summonerDataRANKED_FLEX_5x5` (
+  `id` int(30) AUTO_INCREMENT,
+  `summonerId` varchar(100) UNIQUE,
+  `queueType` varchar(30),
+  `tier` varchar(21),
+  `rank` varchar(5),
+  `leaguePoints` int(4),
+  `wins` int(11),
+  `losses` int(11),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- ----------------------------------- --
+-- Table structure for `summonerDataRANKED_TFT_PAIRS`  --
+-- ----------------------------------- --
+
+DROP TABLE IF EXISTS `summonerDataRANKED_TFT_PAIRS`;
+CREATE TABLE `summonerDataRANKED_TFT_PAIRS` (
+  `id` int(30) AUTO_INCREMENT,
+  `summonerId` varchar(100) UNIQUE,
+  `queueType` varchar(30),
+  `tier` varchar(21),
+  `rank` varchar(5),
+  `leaguePoints` int(4),
+  `wins` int(11),
+  `losses` int(11),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

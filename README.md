@@ -82,3 +82,4 @@ No terminal aparecerá um QR Code, então é só entrar no WhatsApp, clicar em "
 - Persistir dados no banco de dados.
 - Alteração tabela "rank" para "elosoloq" no banco de dados.
 - Salvo mais dados do summoner no temp_db.
+- Criação novas de tabelas no banco de dados para armazenar informações de cada modo de jogo do jogador.

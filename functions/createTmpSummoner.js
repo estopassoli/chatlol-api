@@ -10,12 +10,24 @@ let riot = new RiotRequest(api.key);
 function createTmpSummoner(nome, chatid){
     riot.request('BR1', 'encryptedSummonerId', `/lol/summoner/v4/summoners/by-name/${nome}`, function (err, data) {
         riot.request('BR1', 'encryptedSummonerId', `/lol/league/v4/entries/by-summoner/${data['id']}`, function (err, data2) {
+            tmp_db[chatid] = {}
+            // console.log(data2)
             let summonerId = data['id']
             let accountId = data['accountId']
             let puuid = data['puuid']
             let name = data['name']
             let profileIconId = data['profileIconId']
             let summonerLevel = data['summonerLevel']
+
+            tmp_db[chatid] = {
+            summonerId:summonerId,
+            accountId:accountId,
+            puuid:puuid,
+            name:name,
+            profileIconId:profileIconId,
+            summonerLevel:summonerLevel,
+            queueType: {}
+            }
 
             for (let i in data2){
                 let queueType = data2[i]['queueType']
@@ -25,14 +37,8 @@ function createTmpSummoner(nome, chatid){
                 let wins = data2[i]['wins']
                 let losses = data2[i]['losses']
                 let winrate = (wins / (wins+losses)*100).toFixed(2)+'%'
-                tmp_db[chatid] = {
+                queueTypeChild = {
                     summonerId:summonerId,
-                    accountId:accountId,
-                    puuid:puuid,
-                    name:name,
-                    profileIconId:profileIconId,
-                    summonerLevel:summonerLevel,
-                    queueType:queueType,
                     leaguePoints:leaguePoints,
                     tier:tier,
                     rank:rank,
@@ -40,12 +46,17 @@ function createTmpSummoner(nome, chatid){
                     losses:losses,
                     winrate:winrate
                 }
-                return tmp_db[chatid];
-            }
 
-            console.log(tmp_db)
+                tmp_db[chatid]['queueType'][queueType] = queueTypeChild
+
+                // tmp_db[chatid]['queueType'][queueType] = queueTypeChild;
+            }
+            console.log(tmp_db[chatid])
+            return tmp_db[chatid];
         })
     })
 }
+
+createTmpSummoner('katarina','12314523')
 
 exports.createTmpSummoner = createTmpSummoner;
