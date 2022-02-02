@@ -45,8 +45,8 @@ mysql://admin:123@localhost:3306/summoners
 Para começar, digite:
 
 ```
-git clone https://github.com/joel-vasiliev/chatbot-skeleton-001.git
-cd chatbot-skeleton-001
+git clone https://github.com/estopassoli/chatlol-api
+cd chatlol-api
 npm install
 yarn start
 ```
