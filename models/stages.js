@@ -1,8 +1,4 @@
 stages = {
-    "menu-inicial":{
-        desc: "Menu inicial do BOT",
-        obj: require("../routes/menu-inicial"),
-    },
     "comandos":{
         desc: "Todos os comandos primários do bot",
         obj: require("../routes/comandos")
