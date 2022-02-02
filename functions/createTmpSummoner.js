@@ -10,8 +10,6 @@ let riot = new RiotRequest(api.key);
 function createTmpSummoner(nome, chatid){
     riot.request('BR1', 'encryptedSummonerId', `/lol/summoner/v4/summoners/by-name/${nome}`, function (err, data) {
         riot.request('BR1', 'encryptedSummonerId', `/lol/league/v4/entries/by-summoner/${data['id']}`, function (err, data2) {
-            tmp_db[chatid] = {}
-
             let summonerId = data['id']
             let accountId = data['accountId']
             let puuid = data['puuid']
@@ -26,7 +24,8 @@ function createTmpSummoner(nome, chatid){
                 let rank = data2[i]['rank']
                 let wins = data2[i]['wins']
                 let losses = data2[i]['losses']
-                let queueTypeChildren = {
+                let winrate = (wins / (wins+losses)*100).toFixed(2)+'%'
+                tmp_db[chatid] = {
                     summonerId:summonerId,
                     accountId:accountId,
                     puuid:puuid,
@@ -38,9 +37,10 @@ function createTmpSummoner(nome, chatid){
                     tier:tier,
                     rank:rank,
                     wins:wins,
-                    losses:losses
+                    losses:losses,
+                    winrate:winrate
                 }
-                tmp_db[chatid][queueType] = queueTypeChildren
+                return tmp_db[chatid];
             }
 
             console.log(tmp_db)

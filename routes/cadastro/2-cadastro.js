@@ -9,6 +9,7 @@ var RiotRequest = require('riot-lol-api');
 const {
     api
 } = require("../../configs/api");
+const { menuInicial } = require("../../inc/messages");
 
 var riot = new RiotRequest(api.key);
 
@@ -17,7 +18,13 @@ async function execute(user, msg, contato, client, message) {
     msg = msg.replace(' ', '');
     if (msg === "SIM") {
         await db.setStage(user, 'menu-inicial');
+
+        await db.updateSummoner(user, 'nickname', tmp_db[user].name)
+        await db.updateSummoner(user, 'elosoloq', tmp_db[user].tier + tmp_db[user].rank )
+        await db.updateSummoner(user, 'winrate', tmp_db[user].winrate)
+        await db.updateSummoner(user, 'level', tmp_db[user].summonerLevel)
         await client.sendText(user, "Pronto, cadastro realizado com sucesso!")
+        await client.sendText(user, menuInicial())
 
         createSummoner(user);
 
