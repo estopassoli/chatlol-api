@@ -1,40 +1,43 @@
 const db = require("../models/db");
-const comandos = require('../inc/comandos');
+const {comandos} = require('../inc/comandos');
+const {commandsjson}=require('../inc/cmds_json.json')
 const {
     menuInicial
 } = require("../inc/messages");
+const {searchSummoner}=require('../functions/searchSummoner')
+
 async function execute(user, msg, contato, client, message) {
 
     if (msg == "!help") {
-        let cmd = '';
+        let cmds= '';
         Object.keys(comandos).forEach((value) => {
-            let i = comandos[value];
-            cmd += `${i}\n`;
-        });
-        await client.sendText(user, `Aqui vai uma lista de comandos disponíveis:\n` + cmd)
+          let v = comandos[value];
+          cmds += `*${v.cmd}* - ${v.desc}\n${v.guia}\n\n`;
+      });
+        client.sendText(user, `Aqui vai uma lista de comandos disponíveis:\n\n` + cmds);
     }
-
-    if (msg == "!elo") {
-
-    }
-    if (msg == "!info") {
+    else if (msg == "!elo") {
 
     }
-    if (msg == "!winrate") {
+    else if (msg == "!info") {
 
     }
-    if (msg == "!role") {
+    else if (msg == "!winrate") {
 
     }
-    if (msg == "!addsmurf") {
-        await db.setStage(user, '1-smurf')
-        await client.sendText(user, 'Agora digite seu nome de *Invocador* da sua conta no *League of Legends* ')
+    else if (msg == "!role") {
+
     }
-    
-    else {
-        await client.sendTexT(user, menuInicial())
+    else if (msg == "!list") {
+
     }
-    return;
+    else if (msg == "!addsmurf") {
+        db.setStage(user, '1-smurf')
+        client.sendText(user, 'Agora digite seu nome de *Invocador* da sua conta no *League of Legends* ')
+    }
+    else if(!commandsjson[msg]){
+        await client.sendText(user, menuInicial());
+    }
 }
 
 exports.execute = execute;

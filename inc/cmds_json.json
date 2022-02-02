@@ -1,0 +1,11 @@
+{
+    "commandsjson": [
+        "!help",
+        "!elo",
+        "!info",
+        "!winrate",
+        "!role",
+        "!list"
+    ]
+
+}

@@ -57,10 +57,7 @@ No terminal aparecerá um QR Code, então é só entrar no WhatsApp, clicar em "
 
 ## To-do-list
 
-- Sistema para limpar o banco temporário periodicamente. -> ✅
 - Sistema de autenticação na conta do LOL. 
-- Opção de cadastro de Smurfs.
-- Cadastro de usuários (id, nome, telefone, nick, elo, etc.). -> ✅
 - "Tinder" para encontrar duo/time flex.
 - Obter informações sobre jogador (elo, campeões mais jogados, maestria, winrate).
 - Sistema de criação de x1.
@@ -85,8 +82,12 @@ No terminal aparecerá um QR Code, então é só entrar no WhatsApp, clicar em "
 
 ## v1.2
 
+- Cadastro de usuários (id, nome, telefone, nick, elo, etc.).
+- Sistema para limpar o banco temporário periodicamente.
 - Criar as colunas para os dados novos na tabela 'summoner'.
 - Estruturação tmp_db.
 - Salvar do tmp_db para o MySQL.
 - Criação tabela "smurf".
-- Criação comando !smurf.
+- Criação comando !addsmurf.
+- Opção de cadastro de Smurfs.
+- Organização de comandos (arquivo com verificação de comandos disponíveis cmds_json.json)
