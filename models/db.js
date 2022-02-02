@@ -29,6 +29,12 @@ async function createSummoner(chatid, stage){
   await conn.query(sql);
   return;
 }
+async function createSmurf(chatid, summonerid, nickname, level, elosoloq, winrate){
+  const conn = await connect();
+  const sql = `INSERT INTO smurfs (summonerid, chatid, nickname, level, elosoloq, winrate) values('${summonerid}','${chatid}','${nickname}','${level}','${elosoloq},'${winrate})`;
+  await conn.query(sql);
+  return;
+}
 
 async function updateSummoner(chatid,field,value){
   const conn = await connect();
@@ -42,6 +48,7 @@ async function updateSummoner(chatid,field,value){
 module.exports = {
   getSummonerData,
   getStage,
+  createSmurf,
   setStage,
   createSummoner,
   updateSummoner

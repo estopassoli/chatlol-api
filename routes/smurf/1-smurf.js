@@ -18,20 +18,17 @@ async function execute(user, msg, contato, client, message) {
     msg = msg.replace(' ', '');
     if (msg === "SIM") {
         await db.setStage(user, 'comandos');
+        let summonerid =  await db.getSummonerData(user, 'summonerid')
 
-        await db.updateSummoner(user, 'nickname', tmp_db[user].name)
-        await db.updateSummoner(user, 'elosoloq', tmp_db[user].tier + tmp_db[user].rank )
-        await db.updateSummoner(user, 'winrate', tmp_db[user].winrate)
-        await db.updateSummoner(user, 'level', tmp_db[user].summonerLevel)
-        await client.sendText(user, "Pronto, cadastro realizado com sucesso!")
-        await client.sendText(user, menuInicial())
+        await db.createSmurf(user, summonerid, tmp_db[user].name, tmp_db[user].summonerLevel, tmp_db[user].tier, tmp_db[user].winrate)
+        await client.sendText(user, "Pronto, smurf cadastrada com sucesso!\nPara listar todas suas contas cadastradas utilize o comando: *!myaccs*")
 
         createSummoner(user);
 
         return;
     }
     if (msg === "NAO" || msg === "NÃO") {
-        await client.sendText(user, 'Digite seu nome de *Invocador* da sua conta no *League of Legends* ')
+        await client.sendText(user, "Digite o seu *nick* do *League of Legends*!")
         return;
     }
     else{
@@ -50,7 +47,7 @@ async function execute(user, msg, contato, client, message) {
                     } else { //caso encontre ranked games
                         let wins = `${data2[0].wins}`
                         let losses = `${data2[0].losses}`
-                        let winrate = `${((data2[0].wins / (data2[0].wins + data2[0].losses)) * 100).toFixed(2)}%`
+                        let winrate = `${((wins / (wins + losses)) * 100).toFixed(2)}%`
                         await client.sendButtons(user, `NICKNAME: ${data.name}\nLEVEL: ${data.summonerLevel}\nRANK: ${data2[0].tier} ${data2[0].rank} ${data2[0].leaguePoints} PDL\nWINRATE: ${winrate}\n`, bt_add, "Deseja adicionar esta conta ao seu cadastro?");
                         createTmpSummoner(data.name,user);
                         return;

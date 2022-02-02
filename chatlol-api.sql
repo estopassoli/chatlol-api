@@ -10,26 +10,30 @@ Target Server Type    : MYSQL
 Target Server Version : 80017
 File Encoding         : 65001
 
-Date: 2022-02-01 05:47:06
-*/
-
-/* 
-mysql -uroot -h127.0.0.1 -p12345 < chatlol-api.sql
-mysql -uadmin -h127.0.0.1 -p123 summoners
+Date: 2022-02-02 09:35:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+-- ----------------------------
+-- Table structure for `smurfs`
+-- ----------------------------
+DROP TABLE IF EXISTS `smurfs`;
+CREATE TABLE `smurfs` (
+  `summonerid` int(32) NOT NULL,
+  `chatid` varchar(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `nickname` varchar(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `level` int(32) DEFAULT NULL,
+  `elosoloq` varchar(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `winrate` varchar(0) DEFAULT NULL,
+  PRIMARY KEY (`summonerid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
---     Database creation     --
+-- Records of smurfs
 -- ----------------------------
 
-DROP DATABASE IF EXISTS `summoners`;
-CREATE DATABASE `summoners`;
-USE `summoners`;
-
 -- ----------------------------
--- Table structure for `summoners`
+-- Table structure for `summoner`
 -- ----------------------------
 DROP TABLE IF EXISTS `summoner`;
 CREATE TABLE `summoner` (
@@ -43,14 +47,9 @@ CREATE TABLE `summoner` (
   `level` int(16) DEFAULT NULL,
   `stage` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`summonerid`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-create user IF NOT EXISTS 'admin' IDENTIFIED BY '123';
-grant all privileges on summoners.* to admin;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
--- Records of summoners
+-- Records of summoner
 -- ----------------------------
-/*
-INSERT INTO `summoner` VALUES ('10', '5513996597134@c.us', 'Riquie', null, null, null, null, null, '2-cadastrar');
-*/
+INSERT INTO `summoner` VALUES ('14', '5513996597134@c.us', 'Riquie', 'Riquie', 'GOLDII', '38.10%', null, '250', 'comandos');

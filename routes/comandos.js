@@ -25,7 +25,13 @@ async function execute(user, msg, contato, client, message) {
     }
     if (msg == "!role") {
 
-    } else {
+    }
+    if (msg == "!addsmurf") {
+        await db.setStage(user, '1-smurf')
+        await client.sendText(user, 'Agora digite seu nome de *Invocador* da sua conta no *League of Legends* ')
+    }
+    
+    else {
         await client.sendTexT(user, menuInicial())
     }
     return;
