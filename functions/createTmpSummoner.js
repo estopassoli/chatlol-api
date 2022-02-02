@@ -1,26 +1,51 @@
-let {tmp_db} = require("../models/temp-db")
+let {tmp_db} = require("../models/temp-db");
 
-function createTmpSummoner(chatid, nickname, summonerLevel, eloSoloQ, eloFlex, winRate, wins, losses){
-    let data = {
-        nickname: "",
-        summonerLevel: 0,
-        eloSoloQ: "",
-        eloFlex: "",
-        winRate: "",
-        wins: "",
-        losses: ""
-    }
-    tmp_db[chatid] = data;
+let RiotRequest = require('riot-lol-api');
+const {
+    api
+} = require("../configs/api");
 
-    tmp_db[chatid].nickname = nickname;
-    tmp_db[chatid].summonerLevel = summonerLevel;
-    tmp_db[chatid].eloSoloQ = eloSoloQ;
-    tmp_db[chatid].eloFlex = eloFlex;
-    tmp_db[chatid].winRate = winRate;
-    tmp_db[chatid].wins = wins;
-    tmp_db[chatid].losses = losses;
+let riot = new RiotRequest(api.key);
 
-    console.log(tmp_db)
+function createTmpSummoner(nome, chatid){
+    riot.request('BR1', 'encryptedSummonerId', `/lol/summoner/v4/summoners/by-name/${nome}`, function (err, data) {
+        riot.request('BR1', 'encryptedSummonerId', `/lol/league/v4/entries/by-summoner/${data['id']}`, function (err, data2) {
+            tmp_db[chatid] = {}
+
+            let summonerId = data['id']
+            let accountId = data['accountId']
+            let puuid = data['puuid']
+            let name = data['name']
+            let profileIconId = data['profileIconId']
+            let summonerLevel = data['summonerLevel']
+
+            for (let i in data2){
+                let queueType = data2[i]['queueType']
+                let leaguePoints = data2[i]['leaguePoints']
+                let tier = data2[i]['tier']
+                let rank = data2[i]['rank']
+                let wins = data2[i]['wins']
+                let losses = data2[i]['losses']
+                let queueTypeChildren = {
+                    summonerId:summonerId,
+                    accountId:accountId,
+                    puuid:puuid,
+                    name:name,
+                    profileIconId:profileIconId,
+                    summonerLevel:summonerLevel,
+                    queueType:queueType,
+                    leaguePoints:leaguePoints,
+                    tier:tier,
+                    rank:rank,
+                    wins:wins,
+                    losses:losses
+                }
+                tmp_db[chatid][queueType] = queueTypeChildren
+            }
+
+            console.log(tmp_db)
+        })
+    })
 }
 
 exports.createTmpSummoner = createTmpSummoner;

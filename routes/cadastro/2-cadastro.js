@@ -37,7 +37,7 @@ async function execute(user, msg, contato, client, message) {
                 riot.request('BR1', 'encryptedSummonerId', `/lol/league/v4/entries/by-summoner/${data.id}`, async function (err, data2) {
                     if (data2[0] === undefined) { //caso o summoner seja unranked
                         await client.sendButtons(user, `NICKNAME: ${data.name}\nLEVEL: ${data.summonerLevel}\nRANK: Unranked\nWINRATE: 0%\n`, bt_add, "Deseja adicionar esta conta ao seu cadastro?");   
-                        createTmpSummoner(user, data.name, data.summonerLevel, "Unranked", 'coming-soon','não possui jogos',0,0);
+                        createTmpSummoner(data.name,user);
 
                         return;
                     } else { //caso encontre ranked games
@@ -45,7 +45,7 @@ async function execute(user, msg, contato, client, message) {
                         let losses = `${data2[0].losses}`
                         let winrate = `${((data2[0].wins / (data2[0].wins + data2[0].losses)) * 100).toFixed(2)}%`
                         await client.sendButtons(user, `NICKNAME: ${data.name}\nLEVEL: ${data.summonerLevel}\nRANK: ${data2[0].tier} ${data2[0].rank} ${data2[0].leaguePoints} PDL\nWINRATE: ${winrate}\n`, bt_add, "Deseja adicionar esta conta ao seu cadastro?");
-                        createTmpSummoner(user, data.name, data.summonerLevel, data2[0].tier + data2[0].rank, 'coming-soon', winrate,wins,losses);
+                        createTmpSummoner();
                         return;
                     }
                 });

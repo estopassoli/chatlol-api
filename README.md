@@ -68,6 +68,10 @@ No terminal aparecerá um QR Code, então é só entrar no WhatsApp, clicar em "
 
 ## Próxima versão
 
+- Criar as colunas para os dados novos na tabela 'summoner'.
+- Salvar do tmp_db para o MySQL.
+- Melhorar mensagem após envio do nickname usando os novos dados obtidos.
+
 ## v1.0
 
 - Árvore de escolhas para cadastro e mensagem de boas-vindas.
@@ -77,3 +81,4 @@ No terminal aparecerá um QR Code, então é só entrar no WhatsApp, clicar em "
 
 - Persistir dados no banco de dados.
 - Alteração tabela "rank" para "elosoloq" no banco de dados.
+- Salvo mais dados do summoner no temp_db.

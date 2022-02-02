@@ -1,4 +1,4 @@
 var api = {
-    'key': 'RGAPI-eda84bde-1d01-43eb-85b7-c41098138862',
+    'key': 'RGAPI-82e4943a-40dc-4388-9fd0-e6cd8d9fbcb5',
 }
 exports.api = api;
